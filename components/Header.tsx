@@ -14,7 +14,19 @@ const Header = () => {
       <div className="header flex justify-start items-center">
         <div className="logo-container">
           <h2 className="text-white logo">
-            <Link href={"#"}>David Tuta</Link>
+            <Link href={"#"}>
+              <span>D</span>
+              <span>a</span>
+              <span>v</span>
+              <span>i</span>
+              <span>d</span>
+              <span> </span>
+              <span>T</span>
+              <span>u</span>
+              <span>t</span>
+              <span>a</span>
+              {/* David Tuta */}
+            </Link>
           </h2>
         </div>
         {/* <div className="nav-container">

@@ -1,12 +1,14 @@
+import ImgContainer from "./ImgContainer";
+
 type PageThree = {
   index: number;
 };
 
 const PageThree = () => {
   return (
-    <section className={"page-wrapper"}>
+    <section id="contacto" className={"page-wrapper"}>
       <div className="page-container">
-        <h1>THREE</h1>
+        <ImgContainer src={"/images/rostro.jpg"} />
       </div>
     </section>
   );

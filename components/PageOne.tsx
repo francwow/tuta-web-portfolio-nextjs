@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ImgContainer from "./ImgContainer";
 
 type PageOneProps = {
   index: number;
@@ -6,24 +7,9 @@ type PageOneProps = {
 
 const PageOne = () => {
   return (
-    <section className={"page-wrapper"}>
+    <section id="trabajo" className={"page-wrapper"}>
       <div className="page-container">
-        <h1>ONE</h1>
-        {/* <div className="img-container">
-          <div className="img-modal"></div>
-          <Image
-            width={1200}
-            height={1200}
-            src={"/images/cara.jpg"}
-            alt="img"
-            priority
-            className="main-img"
-          />
-          <div className="img-fade-top"></div>
-          <div className="img-fade-bottom"></div>
-          <div className="img-fade-left"></div>
-          <div className="img-fade-right"></div>
-        </div> */}
+        <ImgContainer src={"/images/cara.jpg"} />
       </div>
     </section>
   );

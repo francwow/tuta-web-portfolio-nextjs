@@ -42,8 +42,19 @@ h6 {
   font-weight: 600;
 }
 
+img {
+  width: 100%;
+  height: auto;
+}
+
 /* Page global styles */
+.pages-container {
+  background-color: black;
+}
+
 .page-wrapper {
+  /* section */
+  position: relative;
   scroll-snap-align: start;
   height: 100vh;
   width: 100%;
@@ -57,6 +68,60 @@ h6 {
   justify-content: center;
   align-items: center;
 }
+
+.img-container {
+  max-width: 500px;
+  height: fit-content;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-fade-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 50%;
+  background: linear-gradient(to bottom, black 10%, transparent);
+}
+
+.img-fade-right {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to left, black 10%, transparent);
+}
+
+.img-fade-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 50%;
+  bottom: 0;
+  background: linear-gradient(to right, black 10%, transparent);
+}
+
+.img-fade-bottom {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, black 30%, transparent);
+}
+
+/* .img-modal {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.527);
+  clip-path: circle(50% at 50% 50%);
+} */
 
 /* <Intro /> */
 .intro-modal {
@@ -221,6 +286,156 @@ video {
   animation-delay: 3.5s;
 }
 
+/* <Header /> */
+.header {
+  padding: 0.7rem 1rem;
+}
+
+.logo a {
+  display: block;
+  padding: 10px;
+  font-size: 1.3rem;
+  letter-spacing: 1.1px;
+}
+
+.logo a span {
+  display: inline-block;
+  /* transform: translate3d(0, 0, 0);
+  opacity: 1;
+  transition: 0.3s ease all; */
+  animation: logo ease both 0.3s;
+}
+
+.logo a span:nth-child(1) {
+  animation-delay: calc(var(--intro-duration) + 1s);
+}
+
+.logo a span:nth-child(2) {
+  animation-delay: calc(var(--intro-duration) + 1.2s);
+}
+
+.logo a span:nth-child(3) {
+  animation-delay: calc(var(--intro-duration) + 1.4s);
+}
+
+.logo a span:nth-child(4) {
+  animation-delay: calc(var(--intro-duration) + 1.6s);
+}
+
+.logo a span:nth-child(5) {
+  animation-delay: calc(var(--intro-duration) + 1.8s);
+}
+
+/* .logo a span:nth-child(6) {
+  animation-delay: calc(var(--intro-duration) + 2s);
+} */
+
+.logo a span:nth-child(7) {
+  animation-delay: calc(var(--intro-duration) + 2s);
+}
+
+.logo a span:nth-child(8) {
+  animation-delay: calc(var(--intro-duration) + 2.2s);
+}
+
+.logo a span:nth-child(9) {
+  animation-delay: calc(var(--intro-duration) + 2.4s);
+}
+
+.logo a span:nth-child(10) {
+  animation-delay: calc(var(--intro-duration) + 2.6s);
+}
+
+@keyframes logo {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -12px, 0) rotateX(-90deg) rotateY(5.7deg)
+      rotate(5.7deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.logo a span:hover {
+  opacity: 1;
+  transform: translate3d(0, -12px, 0) rotateX(-90deg) rotateY(5.7deg)
+    rotate(5.7deg);
+}
+
+/* <NavBar /> */
+.nav-wrapper {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  z-index: 999;
+  /* height: 20vh; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-bar-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 10px;
+  height: 100%;
+  display: flex;
+}
+
+.nav-bar {
+  width: 3px;
+  height: 100%;
+  background-color: rgba(225, 225, 225, 0.3);
+}
+
+.nav-stick {
+  width: 2px;
+  height: 33%;
+  background-color: white;
+  transition: 0.3s ease transform;
+}
+
+.nav-container,
+.main-nav,
+.nav-list {
+  height: 100%;
+}
+
+.nav-container {
+  display: flex;
+}
+
+.nav-modal {
+  position: absolute;
+  inset: 0;
+  height: 33%;
+  width: 100%;
+  background-color: rgba(225, 225, 225, 0.3);
+  z-index: -1;
+  transition: transform 0.3s ease;
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 99;
+}
+
+.nav-list-item {
+  position: relative;
+  padding: 10px;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* <PageOne */
+
 /* Media Queries */
 @media screen and (min-width: 991px) {
   /* <Intro /> */
@@ -264,5 +479,15 @@ video {
 
   .intro-heading:nth-child(2) span:nth-child(4) {
     animation-delay: 4.5s;
+  }
+
+  /* <Header /> */
+  .header {
+    padding: 1rem 1.5rem;
+  }
+
+  .logo a {
+    padding: 10px;
+    font-size: 1.7rem;
   }
 }

@@ -1,12 +1,14 @@
+import ImgContainer from "./ImgContainer";
+
 type PageTwo = {
   index: number;
 };
 
 const PageTwo = () => {
   return (
-    <section className={"page-wrapper"}>
+    <section id="acerca" className={"page-wrapper"}>
       <div className="page-container">
-        <h1>TWO</h1>
+        <ImgContainer src={"/images/brazos.jpg"} />
       </div>
     </section>
   );
