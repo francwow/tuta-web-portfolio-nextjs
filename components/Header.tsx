@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRef, useEffect } from "react";
 
 type HeaderProps = {
@@ -7,23 +8,13 @@ type HeaderProps = {
   setIndex: (index: number) => void;
 };
 
-const Header = ({ index, setIndex }: HeaderProps) => {
-  const btnRef = useRef<HTMLButtonElement>(null);
-
-  // useEffect(() => {
-  //   if (btnRef?.current?.focus()) {
-  //     btnRef.current.blur();
-  //   }
-  // }, [index]);
-
+const Header = () => {
   return (
     <div className="header-container w-full fixed z-[999] top-0 right-0 left-0">
       <div className="header flex justify-start items-center">
         <div className="logo-container">
           <h2 className="text-white logo">
-            <button onClick={() => setIndex(0)} tabIndex={1}>
-              David Tuta
-            </button>
+            <Link href={"#"}>David Tuta</Link>
           </h2>
         </div>
         {/* <div className="nav-container">

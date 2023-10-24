@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { inter, montserrat } from "../fonts/fonts";
+import Header from "@/components/Header";
 
 export const metadata: Metadata = {
   title: "David Tuta",
@@ -16,6 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} ${montserrat.className}`}>
+        <Header />
         {children}
       </body>
     </html>
