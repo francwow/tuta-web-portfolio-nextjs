@@ -21,6 +21,7 @@ body {
   --font-body: "Inter", "Arial", "Helvetica";
   --font-headings: "Montserrat", "Arial", "Helvetica";
   --intro-duration: 7s;
+  background-color: black;
   /* -ms-overflow-style: none; hide scrollbar IE and Edge */
   /* scrollbar-width: none; hide scrollbar Firefox */
 }
