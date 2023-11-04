@@ -1,19 +1,16 @@
-"use client";
-
 import PageOne from "./PageOne";
 import PageTwo from "./PageTwo";
 import PageThree from "./PageThree";
 import Intro from "./Intro";
 import NavBar from "./NavBar";
-import { useState } from "react";
+import Header from "./Header";
 
 const App = ({}) => {
-  const [index, setIndex] = useState(0);
-
   return (
     <div className="pages-container">
-      <NavBar index={index} setIndex={setIndex} />
-      <Intro />
+      <Header />
+      {/* <NavBar /> */}
+      {/* <Intro /> */}
       <PageOne />
       <PageTwo />
       <PageThree />

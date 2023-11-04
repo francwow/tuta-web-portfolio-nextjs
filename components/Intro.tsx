@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { montserrat } from "@/fonts/fonts";
 
 const Intro = () => {
   // useEffect(() => {
@@ -13,7 +14,7 @@ const Intro = () => {
       <div className="intro-heading-wrapper">
         <video src="/videos/smoke.mp4" autoPlay muted></video>
         <div className="intro-heading-container">
-          <h1 className="text-white intro-heading">
+          <h1 className={`text-white intro-heading ${montserrat.variable}`}>
             <span>D</span>
             <span>A</span>
             <span>V</span>
@@ -21,7 +22,7 @@ const Intro = () => {
             <span>D</span>
             {/* <span>&nbsp;</span> */}
           </h1>
-          <h1 className="text-white intro-heading">
+          <h1 className={`text-white intro-heading ${montserrat.variable}`}>
             <span>T</span>
             <span>U</span>
             <span>T</span>

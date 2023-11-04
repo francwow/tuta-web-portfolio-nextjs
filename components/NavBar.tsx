@@ -1,40 +1,44 @@
 "use client";
 
 import Link from "next/link";
+import { montserrat } from "@/fonts/fonts";
+import useNavIndex from "@/contexts/NavContext";
 
 type NavBarProps = {
   index: number;
   setIndex: (index: number) => void;
 };
 
-const NavBar = ({ index, setIndex }: NavBarProps) => {
+const NavBar = () => {
+  const { index, setIndex } = useNavIndex();
+
   return (
-    <div className="nav-wrapper">
+    <div className={`nav-wrapper ${montserrat.variable}`}>
       <div className="nav-container">
         <div className="nav-bar-container">
           <div
             style={
               index === 0
-                ? { transform: "translate3d(0, 0, 0)" }
+                ? { transform: "translate3d(0, 0, 0)", width: "61px" }
                 : index === 1
-                ? { transform: "translate3d(0, 100%, 0)" }
+                ? { transform: "translate3d(105%, 0, 0)", width: "58px" }
                 : index === 2
-                ? { transform: "translate3d(0, 200%, 0)" }
+                ? { transform: "translate3d(162%, 0, 0)", width: "73px" }
                 : {}
             }
             className={"nav-stick"}
           ></div>
-          <div className="nav-bar"></div>
+          {/* <div className="nav-bar"></div> */}
         </div>
         <nav className="main-nav">
           <div
             style={
               index === 0
-                ? { transform: "translate3d(0, 0, 0)" }
+                ? { transform: "translate3d(0, 0, 0)", width: "61px" }
                 : index === 1
-                ? { transform: "translate3d(0, 100%, 0)" }
+                ? { transform: "translate3d(105%, 0, 0)", width: "58px" }
                 : index === 2
-                ? { transform: "translate3d(0, 200%, 0)" }
+                ? { transform: "translate3d(162%, 0, 0)", width: "73px" }
                 : {}
             }
             className={"nav-modal"}
