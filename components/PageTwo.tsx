@@ -3,6 +3,7 @@
 import useNavIndex from "@/contexts/NavContext";
 import ImgContainer from "./ImgContainer";
 import { useEffect, useRef, useState } from "react";
+import { useMediaQuery } from "usehooks-ts";
 import { useInView } from "react-intersection-observer";
 import { galleryItems } from "@/data/galleryData";
 import GalleryItem from "./GalleryItem";
@@ -13,16 +14,11 @@ type PageTwo = {
 
 const PageTwo = () => {
   // const [translateX, setTranslateX] = useState(0);
+  const deskTop = useMediaQuery("(min-width: 991px)");
   const galleryRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const leftIconRef = useRef<HTMLElement>(null);
   const rightIconRef = useRef<HTMLElement>(null);
-
-  let maxScrollLeft: number;
-
-  maxScrollLeft = galleryRef.current
-    ? galleryRef.current.scrollWidth - galleryRef.current.clientWidth
-    : 0;
 
   let dragStart = false;
   let prevPagex: any;
@@ -46,9 +42,6 @@ const PageTwo = () => {
     prevPagex = e.clientX;
     // console.log(prevPagex, "dragStart");
     prevScrollLeft = galleryRef.current?.scrollLeft;
-    if (galleryRef.current !== null) {
-      galleryRef.current.style.scrollBehavior = "auto";
-    }
     if (containerRef.current !== null) {
       containerRef.current.style.cursor = "grabbing";
     }
@@ -59,6 +52,7 @@ const PageTwo = () => {
     prevPagex = e.clientX;
     // console.log(prevPagex, "dragStop");
     if (galleryRef.current !== null) {
+      galleryRef.current.classList.remove("dragging");
       prevScrollLeft = galleryRef.current.scrollLeft;
     }
     if (containerRef.current !== null) {
@@ -70,10 +64,17 @@ const PageTwo = () => {
     if (!dragStart) return;
     e.preventDefault();
     if (galleryRef.current !== null) {
+      galleryRef.current.classList.add("dragging");
       let positionDiff = e.clientX - prevPagex;
       // console.log(positionDiff, "diff");
       console.log(galleryRef.current.scrollLeft);
       galleryRef.current.scrollLeft = prevScrollLeft - positionDiff;
+    }
+
+    if (deskTop) {
+      showHideIcon();
+    } else {
+      return;
     }
   };
 
@@ -85,18 +86,36 @@ const PageTwo = () => {
     return (percent * w) / 100;
   }
 
+  const showHideIcon = () => {
+    // showing/hiding arrows according to gallery scroll left value
+    if (leftIconRef.current !== null && galleryRef.current !== null) {
+      leftIconRef.current.style.opacity =
+        galleryRef.current.scrollLeft == 0 ? "0.5" : "1";
+    }
+    if (rightIconRef.current !== null && galleryRef.current !== null) {
+      // max scrollable width of the gallery
+      let maxScrollLeft =
+        galleryRef.current.scrollWidth - galleryRef.current.clientWidth;
+      rightIconRef.current.style.opacity =
+        galleryRef.current.scrollLeft == maxScrollLeft ? "0.5" : "1";
+    }
+  };
+
   const btnClick = (dir: string) => {
     if (galleryRef.current !== null) {
       if (dir === "right") {
         galleryRef.current.style.scrollBehavior = "smooth";
-        galleryRef.current.scrollLeft += 250 + vw(5);
-
-        console.log(maxScrollLeft);
+        galleryRef.current.scrollLeft += 270 + vw(5);
       } else if (dir === "left") {
         galleryRef.current.style.scrollBehavior = "smooth";
-        galleryRef.current.scrollLeft += -(250 + vw(5));
-        console.log(galleryRef.current.scrollLeft);
+        galleryRef.current.scrollLeft += -(270 + vw(5));
       }
+    }
+
+    if (deskTop) {
+      setTimeout(() => showHideIcon(), 60);
+    } else {
+      return;
     }
   };
 
@@ -126,9 +145,14 @@ const PageTwo = () => {
               >
                 arrow_back
               </i>
-              {galleryItems.map((item) => {
+              {galleryItems.map((item, index) => {
                 return (
-                  <GalleryItem src={item.src} id={item.id} key={item.id} />
+                  <GalleryItem
+                    index={index}
+                    src={item.src}
+                    id={item.id}
+                    key={item.id}
+                  />
                 );
               })}
             </div>

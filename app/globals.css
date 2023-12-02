@@ -24,6 +24,7 @@ body {
   --p-mobile: 0.8rem;
   --p-desktop: 1.1rem;
   --intro-duration: 7s;
+  --color-tomato: #ff6347;
 
   margin: 0;
   padding: 0;
@@ -96,7 +97,7 @@ i.symbol {
   overflow: hidden;
   width: 100%;
   height: 100%;
-  padding: calc(1rem + 5vw);
+  padding: calc(1rem + 1vw);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -183,7 +184,7 @@ i.symbol {
 
 .video-btn-container {
   padding: 10px 15px;
-  background-color: tomato;
+  background-color: var(--color-tomato);
   display: flex;
   gap: 10px;
   align-items: center;
@@ -477,29 +478,15 @@ i.symbol {
   align-items: center;
 }
 
-.nav-bar-container {
-  width: 100%;
-  height: 2px;
-  display: flex;
-  flex-direction: column-reverse;
-}
-
-.nav-bar {
-  width: 100%;
-  height: 3px;
-  background-color: rgba(225, 225, 225, 0.3);
-}
-
-.nav-stick {
-  height: 2px;
-  background-color: white;
-  transition: 0.3s ease transform;
-}
-
 .nav-container,
 .main-nav,
 .nav-list {
   height: 100%;
+}
+
+.main-nav {
+  margin: 0;
+  padding: 0;
 }
 
 .nav-container {
@@ -507,20 +494,28 @@ i.symbol {
   flex-direction: column-reverse;
 }
 
-.nav-modal {
-  position: absolute;
-  inset: 0;
-  height: 100%;
-  background-color: tomato;
-  z-index: -1;
-  transition: transform 0.3s ease;
-}
-
 .nav-list {
+  background-color: var(--color-tomato);
   display: flex;
   flex-direction: row;
   justify-content: center;
+  position: relative;
+  padding: 0;
+  margin: 0;
   z-index: 99;
+}
+
+.nav-list a {
+  display: block;
+}
+
+.nav-list a:focus .nav-list-item,
+.nav-list a:active .nav-list-item {
+  background-color: #ff4827;
+}
+
+.nav-list a:hover .nav-list-item {
+  background-color: #ff4827;
 }
 
 .nav-list-item {
@@ -528,6 +523,7 @@ i.symbol {
   padding: 7px;
   overflow: hidden;
   text-align: center;
+  background-color: var(--color-tomato);
   font-size: var(--nav-item-mobile);
   font-family: var(--font-headings);
 }
@@ -606,7 +602,13 @@ i.symbol {
 
 .work-gallery-wrapper {
   overflow-x: scroll;
-  scroll-behavior: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory !important;
+  height: 100%;
+}
+
+.dragging {
+  scroll-behavior: auto !important;
 }
 
 .work-gallery {
@@ -615,8 +617,8 @@ i.symbol {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  height: 100%;
   gap: 20px;
-  /* scroll-snap-type: x mandatory !important; */
   transform: translate3d(var(--x-px), 0, 0);
   transition: 0s ease transform;
   white-space: nowrap;
@@ -632,13 +634,14 @@ i.symbol {
   cursor: pointer;
   position: absolute;
   padding: 10px;
-  background-color: tomato;
+  background-color: var(--color-tomato);
   border-radius: 50%;
   top: 50%;
   box-shadow: 0 3px 6px 4px rgba(0, 0, 0, 0.2);
+  z-index: 999;
 }
 
-.arrow-left {
+i.symbol.arrow-left {
   left: -25px;
 }
 
@@ -649,7 +652,8 @@ i.symbol {
 .work-gallery-item {
   display: block;
   cursor: grab;
-  /* scroll-snap-align: center; */
+  transition: transform 0.3s ease;
+  scroll-snap-align: center;
 }
 
 .work-gallery-item:active {
@@ -759,5 +763,32 @@ i.symbol {
 @media screen and (orientation: landscape) and (max-width: 991px) {
   .img-container {
     max-width: 300px;
+  }
+}
+
+@media screen and (min-width: 991px) {
+  /* <PageTwo /> */
+  .work-gallery-wrapper {
+    overflow-x: scroll;
+    scroll-behavior: auto;
+    scroll-snap-type: none;
+  }
+
+  .work-gallery-item {
+    opacity: 0.8;
+    scroll-snap-align: none;
+  }
+
+  .work-gallery-item {
+  }
+
+  .work-gallery-item:hover {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+
+  i.symbol.arrow-left {
+    left: -25px;
+    opacity: 0.5;
   }
 }
