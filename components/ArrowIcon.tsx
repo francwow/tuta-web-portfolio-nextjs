@@ -1,12 +1,9 @@
-type ArrowIconProps = {
+type IconProps = {
   icon: string;
-  className?: string;
 };
 
-export default function ArrowIcon({ icon, className }: ArrowIconProps) {
+export default function ArrowIcon({ icon }: IconProps) {
   return (
-    <i onClick={() => console.log("yes")} className={`symbol ${className}`}>
-      {icon}
-    </i> // Use as documented in Material System guide
+    <i className={`symbol`}>{icon}</i> // Use as documented in Material System guide
   );
 }
