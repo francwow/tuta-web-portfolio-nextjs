@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@vercel/speed-insights": "^1.0.2",
     "imagemin": "^8.0.1",
     "imagemin-webp": "^8.0.0",
     "material-symbols": "^0.13.2",
