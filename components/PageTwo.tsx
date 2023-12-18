@@ -21,8 +21,10 @@ const PageTwo = () => {
   const rightIconRef = useRef<HTMLElement>(null);
 
   let dragStart = false;
+  let isDragging = false;
   let prevPagex: any;
   let prevScrollLeft: any;
+  let positionDiff: any;
 
   const { ref, inView, entry } = useInView({
     threshold: 1,
@@ -35,6 +37,33 @@ const PageTwo = () => {
       setIndex(1);
     }
   }, [inView]);
+
+  const autoSlide = () => {
+    if (galleryRef.current !== null) {
+      // if there is no img left to scroll then return
+      if (
+        galleryRef.current.scrollLeft ==
+          galleryRef.current.scrollWidth - galleryRef.current.clientWidth ||
+        galleryRef.current.scrollLeft == 0
+      )
+        return;
+
+      galleryRef.current.style.scrollBehavior = "smooth";
+      positionDiff = Math.abs(positionDiff); // making positionDiff value to positive
+      let imgWidth = 270 + vw(5) + 14;
+      // getting difference value that needs to add or reduce from carousel left to take middle img center
+      let valDiff = imgWidth - positionDiff;
+
+      if (galleryRef.current.scrollLeft > prevScrollLeft) {
+        // user is scrolling to the right
+        return (galleryRef.current.scrollLeft +=
+          positionDiff > imgWidth / 3 ? valDiff : -positionDiff);
+      }
+      // user is scrolling to the left
+      galleryRef.current.scrollLeft -=
+        positionDiff > imgWidth / 3 ? valDiff : -positionDiff;
+    }
+  };
 
   const dragStartFn = (e: any) => {
     // updating global variables value on mouse down event
@@ -53,21 +82,25 @@ const PageTwo = () => {
     // console.log(prevPagex, "dragStop");
     if (galleryRef.current !== null) {
       galleryRef.current.classList.remove("dragging");
-      prevScrollLeft = galleryRef.current.scrollLeft;
     }
     if (containerRef.current !== null) {
       containerRef.current.style.cursor = "grab";
     }
+
+    if (!isDragging) return;
+    isDragging = false;
+    autoSlide();
   };
 
   const dragging = (e: any) => {
     if (!dragStart) return;
     e.preventDefault();
+    isDragging = true;
     if (galleryRef.current !== null) {
       galleryRef.current.classList.add("dragging");
-      let positionDiff = e.clientX - prevPagex;
+      positionDiff = e.clientX - prevPagex;
       // console.log(positionDiff, "diff");
-      console.log(galleryRef.current.scrollLeft);
+      // console.log(galleryRef.current.scrollLeft);
       galleryRef.current.scrollLeft = prevScrollLeft - positionDiff;
     }
 
@@ -120,7 +153,7 @@ const PageTwo = () => {
   };
 
   return (
-    <section ref={ref} id="acerca" className={"page-wrapper"}>
+    <section ref={ref} id="trabajo" className={"page-wrapper"}>
       <div className="page-container">
         <div
           ref={containerRef}

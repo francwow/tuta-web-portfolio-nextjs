@@ -33,7 +33,7 @@ const PageOne = () => {
   }, [inView]);
 
   return (
-    <section ref={ref} id="trabajo" className={"page-wrapper"}>
+    <section ref={ref} id="inicio" className={"page-wrapper"}>
       <div className="page-container">
         <div className="content-container">
           <div className="element-container">
@@ -77,7 +77,7 @@ const PageOne = () => {
             ref={videoRef}
             muted
             controls
-            width={900}
+            width={1300}
             src="/videos/istock1.mp4"
           ></video>
         </div>

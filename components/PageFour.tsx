@@ -5,11 +5,11 @@ import ImgContainer from "./ImgContainer";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
-type PageThree = {
+type PageFourProps = {
   index: number;
 };
 
-const PageThree = () => {
+const PageFour = () => {
   const { ref, inView, entry } = useInView({
     threshold: 1,
   });
@@ -17,18 +17,18 @@ const PageThree = () => {
 
   useEffect(() => {
     if (inView) {
-      console.log("#3 in view");
-      setIndex(2);
+      console.log("#4 in view");
+      setIndex(3);
     }
   }, [inView]);
 
   return (
-    <section ref={ref} id="acerca" className={"page-wrapper"}>
+    <section ref={ref} id="contacto" className={"page-wrapper"}>
       <div className="page-container">
-        <ImgContainer src={"/images/webpImages/brazos.webp"} />
+        <ImgContainer src={"/images/webpImages/rostro.webp"} />
       </div>
     </section>
   );
 };
 
-export default PageThree;
+export default PageFour;

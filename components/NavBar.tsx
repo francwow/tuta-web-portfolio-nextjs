@@ -17,13 +17,16 @@ const NavBar = () => {
       <div className="nav-container">
         <nav className="main-nav">
           <ul className="nav-list">
-            <Link onClick={() => setIndex(0)} href={"#trabajo"}>
+            <Link onClick={() => setIndex(0)} href={"#inicio"}>
+              <li className="nav-list-item">Inicio</li>
+            </Link>
+            <Link onClick={() => setIndex(1)} href={"#trabajo"}>
               <li className="nav-list-item">Trabajo</li>
             </Link>
-            <Link onClick={() => setIndex(1)} href={"#acerca"}>
+            <Link onClick={() => setIndex(2)} href={"#acerca"}>
               <li className="nav-list-item">Acerca</li>
             </Link>
-            <Link onClick={() => setIndex(2)} href={"#contacto"}>
+            <Link onClick={() => setIndex(3)} href={"#contacto"}>
               <li className="nav-list-item">Contacto</li>
             </Link>
           </ul>

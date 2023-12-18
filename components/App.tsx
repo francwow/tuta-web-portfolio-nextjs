@@ -4,6 +4,7 @@ import PageThree from "./PageThree";
 import Intro from "./Intro";
 import NavBar from "./NavBar";
 import Header from "./Header";
+import PageFour from "./PageFour";
 
 const App = ({}) => {
   return (
@@ -14,6 +15,7 @@ const App = ({}) => {
       <PageOne />
       <PageTwo />
       <PageThree />
+      <PageFour />
     </div>
   );
 };

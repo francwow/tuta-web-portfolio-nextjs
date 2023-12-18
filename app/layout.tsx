@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { inter, montserrat } from "../fonts/fonts";
 import Provider from "@/components/Provider";
 import localFont from "next/font/local";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const materialSymbols = localFont({
   variable: "--font-family-symbols", // Variable name (to reference after in CSS/styles)
@@ -28,6 +29,7 @@ export default function RootLayout({
       <Provider>
         <body className={`${inter.variable} ${montserrat.variable}`}>
           {children}
+          <GoogleAnalytics />
         </body>
       </Provider>
     </html>
