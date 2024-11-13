@@ -1,5 +1,5 @@
 import Link from "next/link";
-import NavBar from "./NavBar";
+import NavBar from "./NavBarDesktop";
 import { montserrat } from "@/fonts/fonts";
 
 type HeaderProps = {

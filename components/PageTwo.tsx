@@ -33,10 +33,10 @@ const PageTwo = () => {
 
   useEffect(() => {
     if (inView) {
-      console.log("#2 in view");
+      console.log("#2 in view", index);
       setIndex(1);
     }
-  }, [inView]);
+  }, [inView, index]);
 
   const autoSlide = () => {
     if (galleryRef.current !== null) {
@@ -153,7 +153,11 @@ const PageTwo = () => {
   };
 
   return (
-    <section ref={ref} id="trabajo" className={"page-wrapper"}>
+    <section
+      ref={ref}
+      id="trabajo"
+      className={inView ? "page-wrapper active" : "page-wrapper"}
+    >
       <div className="page-container">
         <div
           ref={containerRef}

@@ -17,13 +17,17 @@ const PageThree = () => {
 
   useEffect(() => {
     if (inView) {
-      console.log("#3 in view");
+      console.log("#3 in view", index);
       setIndex(2);
     }
-  }, [inView]);
+  }, [inView, index]);
 
   return (
-    <section ref={ref} id="acerca" className={"page-wrapper"}>
+    <section
+      ref={ref}
+      id="acerca"
+      className={inView ? "page-wrapper active" : "page-wrapper"}
+    >
       <div className="page-container">
         <ImgContainer src={"/images/webpImages/brazos.webp"} />
       </div>

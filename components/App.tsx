@@ -2,15 +2,15 @@ import PageOne from "./PageOne";
 import PageTwo from "./PageTwo";
 import PageThree from "./PageThree";
 import Intro from "./Intro";
-import NavBar from "./NavBar";
 import Header from "./Header";
 import PageFour from "./PageFour";
+import NavBarMobile from "./NavBarMobile";
 
 const App = ({}) => {
   return (
     <div className="pages-container">
       <Header />
-      {/* <NavBar /> */}
+      <NavBarMobile />
       {/* <Intro /> */}
       <PageOne />
       <PageTwo />

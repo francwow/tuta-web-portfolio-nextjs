@@ -17,13 +17,17 @@ const PageFour = () => {
 
   useEffect(() => {
     if (inView) {
-      console.log("#4 in view");
+      console.log("#4 in view", index);
       setIndex(3);
     }
-  }, [inView]);
+  }, [inView, index]);
 
   return (
-    <section ref={ref} id="contacto" className={"page-wrapper"}>
+    <section
+      ref={ref}
+      id="contacto"
+      className={inView ? "page-wrapper active" : "page-wrapper"}
+    >
       <div className="page-container">
         <ImgContainer src={"/images/webpImages/rostro.webp"} />
       </div>

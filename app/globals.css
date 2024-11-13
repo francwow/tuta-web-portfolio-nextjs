@@ -8,7 +8,7 @@
 
 html {
   scroll-snap-type: y mandatory !important;
-  scroll-behavior: smooth !important;
+  /* scroll-behavior: smooth !important; */
   overflow-y: scroll;
 }
 
@@ -90,6 +90,13 @@ i.symbol {
   height: 100vh;
   width: 100%;
   background-color: black;
+  opacity: 0;
+  transition: 0.2s ease-out;
+}
+
+.page-wrapper.active {
+  opacity: 1;
+  transition: 0.5s ease-in;
 }
 
 .page-container {
@@ -465,10 +472,25 @@ i.symbol {
   align-items: center;
 }
 
+.nav-desktop {
+  display: none;
+}
+
+.nav-mobile {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  width: 100%;
+}
+
 .nav-container,
 .main-nav,
 .nav-list {
   height: 100%;
+  width: 100%;
 }
 
 .main-nav {
@@ -490,20 +512,18 @@ i.symbol {
   padding: 0;
   margin: 0;
   z-index: 99;
+  width: 100%;
 }
 
 .nav-list a {
   display: block;
+  width: 100%;
 }
 
-.nav-list a:focus .nav-list-item,
+/* .nav-list a:focus .nav-list-item,
 .nav-list a:active .nav-list-item {
   background-color: #ff4827;
-}
-
-.nav-list a:hover .nav-list-item {
-  background-color: #ff4827;
-}
+} */
 
 .nav-list-item {
   position: relative;
@@ -513,6 +533,10 @@ i.symbol {
   background-color: var(--color-tomato);
   font-size: var(--nav-item-mobile);
   font-family: var(--font-headings);
+}
+
+.nav-list-item.active {
+  background-color: #ff4827;
 }
 
 /* <PageOne */
@@ -531,6 +555,11 @@ i.symbol {
   transform: translate3d(0, -100%, 0);
   opacity: 0;
   /* transition: all 0.4s ease; */
+}
+
+.video-modal {
+  position: absolute;
+  inset: 0;
 }
 
 .video-modal-container video {
@@ -769,6 +798,20 @@ i.symbol.arrow-left {
 }
 
 @media screen and (min-width: 991px) {
+  /* <NavBarMobile /> */
+  .nav-mobile {
+    display: none;
+  }
+
+  /* <NavBarDesktop /> */
+  .nav-desktop {
+    display: flex;
+  }
+
+  .nav-list a:hover .nav-list-item {
+    background-color: #ff4827;
+  }
+
   /* <PageTwo /> */
   .work-gallery-wrapper {
     overflow-x: scroll;

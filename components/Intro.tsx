@@ -4,10 +4,10 @@ import { useEffect } from "react";
 import { montserrat } from "@/fonts/fonts";
 
 const Intro = () => {
-  // useEffect(() => {
-  //   document.documentElement.style.overflowY = "hidden";
-  //   // Find a way to block scrolling while intro animation finishes
-  // }, []);
+  useEffect(() => {
+    document.documentElement.style.overflowY = "hidden";
+    // Find a way to block scrolling while intro animation finishes
+  }, []);
 
   return (
     <div className="intro-modal">

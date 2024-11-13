@@ -27,13 +27,17 @@ const PageOne = () => {
 
   useEffect(() => {
     if (inView) {
-      console.log("#1 in view");
+      console.log("#1 in view", index);
       setIndex(0);
     }
-  }, [inView]);
+  }, [inView, index]);
 
   return (
-    <section ref={ref} id="inicio" className={"page-wrapper"}>
+    <section
+      ref={ref}
+      id="inicio"
+      className={inView ? "page-wrapper active" : "page-wrapper"}
+    >
       <div className="page-container">
         <div className="content-container">
           <div className="element-container">
@@ -47,7 +51,13 @@ const PageOne = () => {
             </div>
           </div>
           <div className="element-container">
-            <button onClick={() => setModalActive(true)} className="video-btn">
+            <button
+              onClick={() => {
+                setModalActive(true);
+                videoRef.current?.play();
+              }}
+              className="video-btn"
+            >
               <div className="video-btn-container">
                 <h3>Reel</h3>
 
@@ -66,13 +76,16 @@ const PageOne = () => {
 
         <ImgContainer src={"/images/webpImages/cara.webp"} />
         <div
-          onClick={() => setModalActive(false)}
           className={
             modalActive
               ? "video-modal-container modal-active"
               : "video-modal-container"
           }
         >
+          <div
+            onClick={() => setModalActive(false)}
+            className="video-modal"
+          ></div>
           <video
             ref={videoRef}
             muted

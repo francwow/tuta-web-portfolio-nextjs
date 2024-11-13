@@ -30,8 +30,8 @@ export default function RootLayout({
       <Provider>
         <body className={`${inter.variable} ${montserrat.variable}`}>
           {children}
-          <GoogleAnalytics />
-          <SpeedInsights />
+          {/* <GoogleAnalytics />
+          <SpeedInsights /> */}
         </body>
       </Provider>
     </html>
