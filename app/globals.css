@@ -7,7 +7,7 @@
 }
 
 html {
-  scroll-snap-type: y mandatory !important;
+  scroll-snap-type: none;
   /* scroll-behavior: smooth !important; */
   overflow-y: scroll;
 }
@@ -798,6 +798,12 @@ i.symbol.arrow-left {
 }
 
 @media screen and (min-width: 991px) {
+  html {
+    scroll-snap-type: y mandatory !important;
+    /* scroll-behavior: smooth !important; */
+    overflow-y: scroll;
+  }
+
   /* <NavBarMobile /> */
   .nav-mobile {
     display: none;
