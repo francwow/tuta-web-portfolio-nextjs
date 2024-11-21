@@ -12,7 +12,7 @@ type PageOneProps = {
 
 const PageOne = () => {
   const { ref, inView, entry } = useInView({
-    threshold: 0.95,
+    threshold: 0.9,
   });
   const { index, setIndex } = useNavIndex();
 
