@@ -11,7 +11,7 @@ type PageThree = {
 
 const PageThree = () => {
   const { ref, inView, entry } = useInView({
-    threshold: 0.9,
+    threshold: 0.95,
   });
   const { index, setIndex } = useNavIndex();
 
