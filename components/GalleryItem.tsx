@@ -25,7 +25,13 @@ const GalleryItem = ({ src, id, index }: GalleryItemProps) => {
       style={hovering ? { zIndex: "99" } : { zIndex: `${index}` }}
     >
       <figure>
-        <Image width={300} height={300} src={src} alt="portfolio project" />
+        <Image
+          width={300}
+          height={300}
+          src={src}
+          priority
+          alt="portfolio project"
+        />
       </figure>
     </div>
 
