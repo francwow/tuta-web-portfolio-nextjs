@@ -5,6 +5,8 @@ import ImgContainer from "./ImgContainer";
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import useNavIndex from "@/contexts/NavContext";
+import img1 from "../assets/images/cara.webp";
+import img2 from "../assets/images/landscape.webp";
 
 type PageOneProps = {
   index: number;
@@ -17,14 +19,14 @@ const PageOne = () => {
   const { index, setIndex } = useNavIndex();
 
   const [infoActive, setInfoActive] = useState(false);
-  const [modalActive, setModalActive] = useState(false);
+  const [reelActive, setReelActive] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    if (!modalActive && videoRef.current !== null) {
+    if (!reelActive && videoRef.current !== null) {
       videoRef.current.pause();
     }
-  }, [modalActive]);
+  }, [reelActive]);
 
   useEffect(() => {
     if (inView) {
@@ -42,67 +44,40 @@ const PageOne = () => {
       <div className="page-container">
         <div className="content-container inicio-info">
           <div
-            onMouseEnter={() => setInfoActive(true)}
-            onMouseLeave={() => setInfoActive(false)}
-            className={
-              infoActive
-                ? "element-container inicio-info-info active"
-                : modalActive
-                ? "element-container inicio-info-info not-active"
-                : "element-container inicio-info-info"
-            }
-          >
-            <div className="modal">
-              <h1>Info</h1>
-            </div>
-            {/* <div className="text-container">
-              <h3>Lorem ipsum</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-                mattis sem eget enim pretium, eget blandit velit accumsan.
-                Vivamus efficitur augue diam.
-              </p>
-            </div> */}
-          </div>
-          <div
             onMouseEnter={() => {
-              setModalActive(true);
+              setReelActive(true);
               videoRef.current?.play();
             }}
             onMouseLeave={() => {
-              setModalActive(false);
+              setReelActive(false);
               if (videoRef.current) {
                 videoRef.current.currentTime = 0;
               }
             }}
+            onPointerDown={() => {
+              setReelActive(true);
+              videoRef.current?.play();
+            }}
             className={
               infoActive
                 ? "element-container inicio-info-reel not-active"
-                : modalActive
+                : reelActive
                 ? "element-container inicio-info-reel active"
                 : "element-container inicio-info-reel"
             }
           >
             <div
               className={
-                modalActive
+                reelActive
                   ? "video-modal-container modal-active"
                   : "video-modal-container modal-not-active"
               }
             >
-              <div
-                onClick={() => {
-                  if (videoRef.current) {
-                    if (videoRef.current.paused === true) {
-                      videoRef.current.play();
-                    } else if (videoRef.current.paused === false) {
-                      videoRef.current.pause();
-                    }
-                  }
-                }}
-                className="modal"
-              >
-                <h1>Ver Reel</h1>
+              {/* <div className="inicio-bg">
+                <Image src={img2} width={2000} height={2000} priority alt="" />
+              </div> */}
+              <div className="modal">
+                <span>Ver Reel</span>
               </div>
               <video
                 ref={videoRef}
@@ -112,30 +87,40 @@ const PageOne = () => {
                 src="/videos/istock1.mp4"
               ></video>
             </div>
-            {/* <button
-              onClick={() => {
-                setModalActive(true);
-                videoRef.current?.play();
-              }}
-              className="main-btn video-btn"
-            >
-              <div className="video-btn-container">
-                <span>Reel</span>
-
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="34"
-                  height="34"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-3 17v-10l9 5.146-9 4.854z" />
-                </svg>
+          </div>
+          <div
+            onMouseEnter={() => setInfoActive(true)}
+            onMouseLeave={() => setInfoActive(false)}
+            onPointerDown={() => {
+              if (videoRef.current) {
+                videoRef.current.currentTime = 0;
+              }
+            }}
+            className={
+              infoActive
+                ? "element-container inicio-info-info active"
+                : reelActive
+                ? "element-container inicio-info-info not-active"
+                : "element-container inicio-info-info"
+            }
+          >
+            {/* <div className="inicio-bg">
+              <Image src={img1} width={2000} height={2000} priority alt="" />
+            </div> */}
+            <div className="modal">
+              <span>Info</span>
+            </div>
+            <div className="inicio-info-text">
+              <div className="text-container">
+                <h2>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Quisque mattis sem eget enim pretium.
+                </h2>
               </div>
-            </button> */}
+            </div>
+            <ImgContainer src={"/images/webpImages/cara.webp"} />
           </div>
         </div>
-
-        <ImgContainer src={"/images/webpImages/cara.webp"} />
       </div>
     </section>
   );

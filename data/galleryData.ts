@@ -1,34 +1,43 @@
+import img1 from "@/assets/images/work-gallery/boy-chair.webp";
+import img2 from "@/assets/images/work-gallery/girl.webp";
+import img3 from "@/assets/images/work-gallery/fragance.webp";
+import img4 from "@/assets/images/work-gallery/doctor.webp";
+import img5 from "@/assets/images/work-gallery/landscape.webp";
+import img6 from "@/assets/images/work-gallery/orange-juice.webp";
+import img7 from "@/assets/images/work-gallery/landscape2.webp";
+import img8 from "@/assets/images/work-gallery/social-event.webp";
+
 export const galleryItems = [
   {
     id: 0,
-    src: "/images/webpImages/girl.webp",
+    src: img1.src,
   },
   {
     id: 1,
-    src: "/images/webpImages/girl.webp",
+    src: img2.src,
   },
   {
     id: 2,
-    src: "/images/webpImages/girl.webp",
+    src: img3.src,
   },
   {
     id: 3,
-    src: "/images/webpImages/girl.webp",
+    src: img4.src,
   },
   {
     id: 4,
-    src: "/images/webpImages/girl.webp",
+    src: img5.src,
   },
   {
     id: 5,
-    src: "/images/webpImages/girl.webp",
+    src: img6.src,
   },
   {
     id: 6,
-    src: "/images/webpImages/girl.webp",
+    src: img7.src,
   },
   {
     id: 7,
-    src: "/images/webpImages/girl.webp",
+    src: img8.src,
   },
 ];
