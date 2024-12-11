@@ -4,7 +4,7 @@ import Image from "next/image";
 import ImgContainer from "./ImgContainer";
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import useNavIndex from "@/contexts/NavContext";
+import { useMouseClick, useNavIndex } from "@/contexts/ContextHooks";
 import img1 from "../assets/images/cara.webp";
 import img2 from "../assets/images/landscape.webp";
 
@@ -21,6 +21,12 @@ const PageOne = () => {
   const [infoActive, setInfoActive] = useState(false);
   const [reelActive, setReelActive] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current !== null) {
+      videoRef.current.currentTime = 1;
+    }
+  }, []);
 
   useEffect(() => {
     if (!reelActive && videoRef.current !== null) {
@@ -51,7 +57,7 @@ const PageOne = () => {
             onMouseLeave={() => {
               setReelActive(false);
               if (videoRef.current) {
-                videoRef.current.currentTime = 0;
+                videoRef.current.currentTime = 1;
               }
             }}
             onPointerDown={() => {
@@ -84,7 +90,7 @@ const PageOne = () => {
                 muted
                 loop
                 width={1300}
-                src="/videos/istock1.mp4"
+                src="/videos/opzione-1.mp4"
               ></video>
             </div>
           </div>
@@ -93,7 +99,7 @@ const PageOne = () => {
             onMouseLeave={() => setInfoActive(false)}
             onPointerDown={() => {
               if (videoRef.current) {
-                videoRef.current.currentTime = 0;
+                videoRef.current.currentTime = 1;
               }
             }}
             className={

@@ -1,12 +1,17 @@
 "use client";
 
-import useNavIndex from "@/contexts/NavContext";
+import {
+  useMouseClick,
+  useNavIndex,
+  usePointer,
+} from "@/contexts/ContextHooks";
 import ImgContainer from "./ImgContainer";
 import { useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import { useInView } from "react-intersection-observer";
 import { galleryItems } from "@/data/galleryData";
 import GalleryItem from "./GalleryItem";
+import { handleMouseClick } from "@/functions/mouseClick";
 
 type PageTwo = {
   index: number;
@@ -19,6 +24,8 @@ const PageTwo = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const leftIconRef = useRef<HTMLElement>(null);
   const rightIconRef = useRef<HTMLElement>(null);
+  const { setPointerIn } = usePointer();
+  const { setMouseClick } = useMouseClick();
 
   let dragStart = false;
   let isDragging = false;
@@ -169,15 +176,30 @@ const PageTwo = () => {
           <div ref={galleryRef} className="work-gallery-wrapper">
             <div className="work-gallery">
               <i
+                role="button"
+                tabIndex={0}
+                onPointerEnter={() => setPointerIn(true)}
+                onPointerLeave={() => setPointerIn(false)}
                 ref={rightIconRef}
-                onClick={() => btnClick("right")}
+                onClick={() => {
+                  btnClick("right");
+                  handleMouseClick({ setMouseClick });
+                }}
                 className="symbol arrow-right"
               >
                 arrow_forward
               </i>
+
               <i
+                role="button"
+                tabIndex={0}
+                onPointerEnter={() => setPointerIn(true)}
+                onPointerLeave={() => setPointerIn(false)}
                 ref={leftIconRef}
-                onClick={() => btnClick("left")}
+                onClick={() => {
+                  btnClick("left");
+                  handleMouseClick({ setMouseClick });
+                }}
                 className="symbol arrow-left"
               >
                 arrow_back

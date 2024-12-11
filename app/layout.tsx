@@ -5,6 +5,7 @@ import Provider from "@/components/Provider";
 import localFont from "next/font/local";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import Cursor from "@/components/Cursor";
 
 const materialSymbols = localFont({
   variable: "--font-family-symbols", // Variable name (to reference after in CSS/styles)
@@ -29,6 +30,7 @@ export default function RootLayout({
     <html className={`${materialSymbols.variable}`} lang="en">
       <Provider>
         <body className={`${inter.variable} ${montserrat.variable}`}>
+          <Cursor />
           {children}
           {/* <GoogleAnalytics />
           <SpeedInsights /> */}

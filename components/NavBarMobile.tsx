@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { montserrat } from "@/fonts/fonts";
-import useNavIndex from "@/contexts/NavContext";
+import { useNavIndex } from "@/contexts/ContextHooks";
 
 type NavBarProps = {
   index: number;

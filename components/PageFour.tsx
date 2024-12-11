@@ -1,6 +1,6 @@
 "use client";
 
-import useNavIndex from "@/contexts/NavContext";
+import { useNavIndex } from "@/contexts/ContextHooks";
 import ImgContainer from "./ImgContainer";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
