@@ -5,8 +5,7 @@ import ImgContainer from "./ImgContainer";
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { useMouseClick, useNavIndex } from "@/contexts/ContextHooks";
-import img1 from "../assets/images/cara.webp";
-import img2 from "../assets/images/landscape.webp";
+import img from "@/assets/images/cara.webp";
 
 type PageOneProps = {
   index: number;
@@ -124,7 +123,7 @@ const PageOne = () => {
                 </h2>
               </div>
             </div>
-            <ImgContainer src={"/images/webpImages/cara.webp"} />
+            <ImgContainer src={img.src} />
           </div>
         </div>
       </div>

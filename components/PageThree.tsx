@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
 import { galleryItems } from "@/data/galleryData";
+import img from "@/assets/images/brazos.webp";
 
 type PageThree = {
   index: number;
@@ -87,7 +88,7 @@ const PageThree = () => {
               una oportunidad para crear contenido que inspire, conecte y marque
               la diferencia.
             </p>
-            <ImgContainer src={"/images/webpImages/brazos.webp"} />
+            <ImgContainer src={img.src} />
           </div>
         </div>
       </div>
