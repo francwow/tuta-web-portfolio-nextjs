@@ -12,9 +12,15 @@ import { useInView } from "react-intersection-observer";
 import { galleryItems } from "@/data/galleryData";
 import GalleryItem from "./GalleryItem";
 import { handleMouseClick } from "@/functions/mouseClick";
+import Btn from "./Btn";
+import Image from "next/image";
 
 type PageTwo = {
   index: number;
+};
+
+type GalleryReel = {
+  reel: string;
 };
 
 const PageTwo = () => {
@@ -26,6 +32,8 @@ const PageTwo = () => {
   const rightIconRef = useRef<HTMLElement>(null);
   const { setPointerIn } = usePointer();
   const { setMouseClick } = useMouseClick();
+  const [galleryReel, setGalleryReel] = useState<GalleryReel | null>(null);
+  // const [drag, setDrag] = useState(false);
 
   let dragStart = false;
   let isDragging = false;
@@ -37,6 +45,14 @@ const PageTwo = () => {
     threshold: 0.9,
   });
   const { index, setIndex } = useNavIndex();
+
+  useEffect(() => {
+    if (galleryReel) {
+      document.documentElement.style.overflowY = "hidden";
+    } else {
+      document.documentElement.style.overflowY = "scroll";
+    }
+  }, [galleryReel]);
 
   useEffect(() => {
     if (inView) {
@@ -95,6 +111,7 @@ const PageTwo = () => {
     }
 
     if (!isDragging) return;
+    // setDrag((prev) => false);
     isDragging = false;
     autoSlide();
   };
@@ -102,6 +119,7 @@ const PageTwo = () => {
   const dragging = (e: any) => {
     if (!dragStart) return;
     e.preventDefault();
+    // setDrag((prev) => true);
     isDragging = true;
     if (galleryRef.current !== null) {
       galleryRef.current.classList.add("dragging");
@@ -165,6 +183,34 @@ const PageTwo = () => {
       id="trabajo"
       className={inView ? "page-wrapper active" : "page-wrapper"}
     >
+      {galleryReel ? (
+        <div
+          className={
+            galleryReel
+              ? "work-reel-container active"
+              : "work-reel-container not-active"
+          }
+        >
+          <Btn>
+            <div onClick={() => setGalleryReel(null)}>X</div>
+          </Btn>
+          <div className="work-reel">
+            {/* <Image
+              src={galleryReel?.reel}
+              width={1800}
+              height={1800}
+              alt="portfolio project"
+            /> */}
+            <video
+              muted
+              loop
+              autoPlay
+              width={1300}
+              src="/videos/opzione-1.mp4"
+            ></video>
+          </div>
+        </div>
+      ) : null}
       <div className="page-container">
         <div
           ref={containerRef}
@@ -206,12 +252,35 @@ const PageTwo = () => {
               </i>
               {galleryItems.map((item, index) => {
                 return (
-                  <GalleryItem
-                    index={index}
-                    src={item.src}
-                    id={item.id}
-                    key={item.id}
-                  />
+                  // <GalleryItem
+                  //   index={index}
+                  //   src={item.src}
+                  //   id={item.id}
+                  //   key={item.id}
+                  // />
+                  <Btn key={item.id}>
+                    <div
+                      onClick={() => setGalleryReel({ reel: item.reel })}
+                      className={
+                        isDragging
+                          ? "work-gallery-item active"
+                          : "work-gallery-item"
+                      }
+                      data-index={item.id}
+                    >
+                      <figure>
+                        <div className="gallery-img-container">
+                          <Image
+                            width={300}
+                            height={300}
+                            src={item.src}
+                            priority
+                            alt="portfolio project"
+                          />
+                        </div>
+                      </figure>
+                    </div>
+                  </Btn>
                 );
               })}
             </div>

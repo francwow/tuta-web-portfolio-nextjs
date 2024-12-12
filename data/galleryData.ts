@@ -11,33 +11,41 @@ export const galleryItems = [
   {
     id: 0,
     src: img1.src,
+    reel: img8.src,
   },
   {
     id: 1,
     src: img2.src,
+    reel: img8.src,
   },
   {
     id: 2,
     src: img3.src,
+    reel: img8.src,
   },
   {
     id: 3,
     src: img4.src,
+    reel: img8.src,
   },
   {
     id: 4,
     src: img5.src,
+    reel: img8.src,
   },
   {
     id: 5,
     src: img6.src,
+    reel: img8.src,
   },
   {
     id: 6,
     src: img7.src,
+    reel: img8.src,
   },
   {
     id: 7,
     src: img8.src,
+    reel: img8.src,
   },
 ];
