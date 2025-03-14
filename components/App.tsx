@@ -1,9 +1,9 @@
-import PageOne from "./PageOne";
-import PageTwo from "./PageTwo";
-import PageThree from "./PageThree";
+import PageOne from "./_Home";
+import PageTwo from "./_Work";
+import PageThree from "./_About";
 import Intro from "./Intro";
 import Header from "./Header";
-import PageFour from "./PageFour";
+import PageFour from "./_Contact";
 import NavBarMobile from "./NavBarMobile";
 
 const App = ({}) => {

@@ -2,9 +2,10 @@ import Image from "next/image";
 
 type ImgContainerProps = {
   src: string;
+  prio: boolean;
 };
 
-const ImgContainer = ({ src }: ImgContainerProps) => {
+const ImgContainer = ({ src, prio }: ImgContainerProps) => {
   return (
     <div className="img-container">
       <div className="img-modal"></div>
@@ -13,7 +14,7 @@ const ImgContainer = ({ src }: ImgContainerProps) => {
         height={1200}
         src={src}
         alt="img"
-        priority
+        priority={prio}
         className="main-img"
       />
       <div className="img-fade-top"></div>

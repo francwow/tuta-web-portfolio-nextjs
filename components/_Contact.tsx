@@ -14,11 +14,11 @@ const PageFour = () => {
   const { ref, inView, entry } = useInView({
     threshold: 0.9,
   });
+
   const { index, setIndex } = useNavIndex();
 
   useEffect(() => {
     if (inView) {
-      console.log("#4 in view", index);
       setIndex(3);
     }
   }, [inView, index]);
@@ -30,7 +30,7 @@ const PageFour = () => {
       className={inView ? "page-wrapper active" : "page-wrapper"}
     >
       <div className="page-container">
-        <ImgContainer src={img.src} />
+        <ImgContainer src={img.src} prio={false} />
       </div>
     </section>
   );

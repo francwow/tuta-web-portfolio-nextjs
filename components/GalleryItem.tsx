@@ -1,37 +1,55 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
-import { useMediaQuery } from "usehooks-ts";
+import { useEffect, useRef, useState } from "react";
 import Btn from "./Btn";
+import { useLanguage } from "@/contexts/ContextHooks";
 
-type GalleryItemProps = {
-  src: string;
+type Item = {
   id: number;
-  index: number;
+  src: string;
+  reel: string;
+  nameES: string;
+  nameEN: string;
 };
 
-const GalleryItem = ({ src, id, index }: GalleryItemProps) => {
-  const deskTop = useMediaQuery("(min-width: 991px)");
-  const [hovering, setHovering] = useState(false);
+type GalleryReel = {
+  reel: string;
+};
+
+type GalleryItemProps = {
+  item: Item;
+  setGalleryReel: (galleryReel: GalleryReel) => void;
+  key: number;
+};
+
+const GalleryItem = ({ item, setGalleryReel }: GalleryItemProps) => {
+  const galleryBtnRef = useRef<HTMLDivElement>(null);
+  const { language } = useLanguage();
 
   return (
     <Btn>
       <div
+        ref={galleryBtnRef}
+        onMouseDown={(e) => {
+          console.log("clicked");
+        }}
+        onMouseUp={(e) => {
+          console.log("unclicked");
+        }}
+        // onClick={() => {
+        //   setGalleryReel({ reel: item.reel });
+        // }}
         className={"work-gallery-item"}
-        data-index={id}
-        onMouseEnter={() => setHovering(true)}
-        onMouseLeave={() => setHovering(false)}
-        style={hovering ? { zIndex: "99" } : { zIndex: `${index}` }}
+        data-index={item.id}
       >
+        <span>{language === "ES" ? item.nameES : item.nameEN}</span>
         <figure>
           <div className="gallery-img-container">
             <Image
-              width={300}
-              height={300}
-              src={src}
-              priority
+              width={900}
+              height={900}
+              src={item.src}
               alt="portfolio project"
             />
           </div>

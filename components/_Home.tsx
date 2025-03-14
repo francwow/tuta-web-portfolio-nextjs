@@ -4,7 +4,11 @@ import Image from "next/image";
 import ImgContainer from "./ImgContainer";
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import { useMouseClick, useNavIndex } from "@/contexts/ContextHooks";
+import {
+  useLanguage,
+  useMouseClick,
+  useNavIndex,
+} from "@/contexts/ContextHooks";
 import img from "@/assets/images/cara.webp";
 
 type PageOneProps = {
@@ -16,6 +20,7 @@ const PageOne = () => {
     threshold: 0.9,
   });
   const { index, setIndex } = useNavIndex();
+  const { language } = useLanguage();
 
   const [infoActive, setInfoActive] = useState(false);
   const [reelActive, setReelActive] = useState(false);
@@ -28,17 +33,16 @@ const PageOne = () => {
   }, []);
 
   useEffect(() => {
+    if (inView) {
+      setIndex(0);
+    }
+  }, [inView, index]);
+
+  useEffect(() => {
     if (!reelActive && videoRef.current !== null) {
       videoRef.current.pause();
     }
   }, [reelActive]);
-
-  useEffect(() => {
-    if (inView) {
-      console.log("#1 in view", index);
-      setIndex(0);
-    }
-  }, [inView, index]);
 
   return (
     <section
@@ -78,11 +82,8 @@ const PageOne = () => {
                   : "video-modal-container modal-not-active"
               }
             >
-              {/* <div className="inicio-bg">
-                <Image src={img2} width={2000} height={2000} priority alt="" />
-              </div> */}
               <div className="modal">
-                <span>Ver Reel</span>
+                <span>{language === "ES" ? "Ver Reel" : "Watch Reel"}</span>
               </div>
               <video
                 ref={videoRef}
@@ -123,7 +124,7 @@ const PageOne = () => {
                 </h2>
               </div>
             </div>
-            <ImgContainer src={img.src} />
+            <ImgContainer src={img.src} prio={true} />
           </div>
         </div>
       </div>
