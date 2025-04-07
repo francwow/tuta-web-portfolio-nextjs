@@ -201,7 +201,7 @@ img {
   width: 100%;
   height: 100%;
   opacity: 0.5;
-  transition: var(--transition-main);
+  transition: 0.3s ease opacity;
 }
 
 .languages-container.es-active .es {
@@ -252,12 +252,12 @@ i.symbol {
   width: 100%;
   background-color: black;
   opacity: 0;
-  transition: 0.2s ease-out;
+  transition: 0.2s ease-out opacity;
 }
 
 .page-wrapper.active {
   opacity: 1;
-  transition: 0.5s ease-in;
+  transition: 0.5s ease-in opacity;
 }
 
 .page-container {
@@ -732,7 +732,7 @@ i.symbol {
   font-size: var(--nav-item-mobile);
   font-family: var(--font-headings);
   font-weight: 600;
-  transition: var(--transition-main);
+  transition: 0.3s ease background-color;
 }
 
 .nav-list-item.active {
@@ -858,7 +858,7 @@ i.symbol {
 .inicio-info .element-container {
   width: 100%;
   height: 50%;
-  transition: 1s ease all;
+  transition: 1s ease height;
 }
 
 .inicio-info .element-container.active {
@@ -875,7 +875,7 @@ i.symbol {
   .inicio-info .element-container {
     width: 50%;
     height: 100%;
-    transition: 1s ease all;
+    transition: 1s ease width;
   }
 
   .inicio-info .element-container.active {
@@ -918,7 +918,7 @@ i.symbol {
 .inicio-info .element-container.active .inicio-info-text {
   opacity: 1;
   transform: translate3d(0, 0, 0);
-  transition: 1s ease all;
+  transition: 1s ease transform, 1s ease opacity;
   transition-delay: 0.25s;
 }
 
@@ -1234,7 +1234,7 @@ i.symbol {
   justify-content: space-between;
   align-items: center;
   gap: 0rem;
-  transition: var(--transition-main);
+  transition: 0.3s ease gap;
   transition-delay: 1.5s;
 }
 
@@ -1250,12 +1250,12 @@ i.symbol {
 .about-container .element-container {
   overflow: hidden;
   padding: 0;
-  transition: 1s ease all;
+  transition: 1s ease width, 1s ease height, 1s ease transform;
   transition-delay: 1s;
 }
 
 #acerca.active .about-container .element-container {
-  transition: 1s ease all;
+  transition: 1s ease width, 1s ease height, 1s ease transform;
   transition-delay: 1s;
 }
 
@@ -1575,7 +1575,7 @@ i.symbol {
   .inicio-info .element-container {
     width: 50%;
     height: 100%;
-    transition: 1s ease all;
+    transition: 1s ease width, 1s ease height;
   }
 
   .inicio-info .element-container.active {
@@ -1611,7 +1611,8 @@ i.symbol {
   .work-gallery-item {
     opacity: 1;
     scroll-snap-align: none;
-    transition: var(--transition-main);
+    transform: scale(1);
+    transition: 0.3s ease transform;
   }
 
   .work-gallery-item span {
@@ -1622,7 +1623,7 @@ i.symbol {
     width: 100%;
     height: 100%;
     opacity: 0.85;
-    transition: var(--transition-main);
+    transition: 0.3s ease opacity;
   }
 
   .work-gallery-item:hover figure {
@@ -1701,7 +1702,7 @@ i.symbol {
 
   .about-images {
     clip-path: inset(0%);
-    transition: var(--transition-main);
+    transition: 0.3s ease clip-path;
   }
 
   .about-images:hover {
@@ -1709,7 +1710,8 @@ i.symbol {
   }
 
   .about-img-container {
-    transition: var(--transition-main);
+    transform: scale(1);
+    transition: 0.3s ease transform;
   }
 
   .about-images:hover .about-img-container {
