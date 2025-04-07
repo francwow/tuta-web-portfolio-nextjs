@@ -2,6 +2,8 @@
 
 import { createContext, useContext } from "react";
 import {
+  GalleryReel,
+  GalleryReelContextType,
   LanguageContextType,
   MouseClickContextType,
   NavContextType,
@@ -9,6 +11,9 @@ import {
 } from "../types/Types";
 
 export const NavContext = createContext<NavContextType | null>(null);
+// export const GalleryReelContext = createContext<GalleryReelContextType | null>(
+//   null
+// );
 export const PointerContext = createContext<PointerContextType | null>(null);
 export const LanguageContext = createContext<LanguageContextType | null>(null);
 export const MouseClickContext = createContext<MouseClickContextType | null>(
@@ -54,3 +59,13 @@ export const useMouseClick = (): MouseClickContextType => {
 
   return context;
 };
+
+// export const useGalleryReel = (): GalleryReelContextType => {
+//   const context = useContext(GalleryReelContext);
+
+//   if (!context) {
+//     throw new Error("Please use Provider in parent component");
+//   }
+
+//   return context;
+// };

@@ -61,8 +61,8 @@ const PageThree = () => {
                   >
                     <Image
                       src={item.src}
-                      width={900}
-                      height={900}
+                      width={1600}
+                      height={1600}
                       alt="portfolio project"
                     />
                   </div>
@@ -73,15 +73,15 @@ const PageThree = () => {
           <div className="element-container about-info">
             <p>
               {language === "ES"
-                ? "Soy un filmmaker apasionado por transformar ideas en narrativas visuales impactantes. Mi experiencia abarca desde la concepción inicial hasta la postproducción, incluyendo la creación de efectos 3D y fotografía. Me especializo en la producción de videos para redes sociales y comunicación corporativa, tanto interna como externa."
-                : "I am a filmmaker passionate about transforming ideas into impactful visual narratives. My experience ranges from initial conception to post-production, including the creation of 3D effects and photography. I specialize in producing videos for social media and corporate communication, both internal and external."}
+                ? "Soy un filmmaker apasionado por transformar ideas en narrativas visuales impactantes. Mi experiencia abarca desde la concepción inicial hasta la postproducción, incluyendo la creación de efectos 3D y fotografía. Me especializo en la producción de videos para redes sociales y comunicación corporativa, tanto interna como externa. Mi objetivo es ayudar a empresas y emprendedores a comunicar sus ideas de manera efectiva, ya sea para lanzar proyectos prometedores o consolidar negocios establecidos. Cada proyecto es una oportunidad para crear contenido que inspire, conecte y marque la diferencia."
+                : "I am a filmmaker passionate about transforming ideas into impactful visual narratives. My experience ranges from initial conception to post-production, including the creation of 3D effects and photography. I specialize in producing videos for social media and corporate communication, both internal and external. My goal is to help companies and entrepreneurs communicate their ideas effectively, whether to launch promising projects or consolidate established businesses. Each project is an opportunity to create content that inspires, connects and makes a difference.z"}
             </p>
-            <br />
+            {/* <br />
             <p>
               {language === "ES"
                 ? "Mi objetivo es ayudar a empresas y emprendedores a comunicar sus ideas de manera efectiva, ya sea para lanzar proyectos prometedores o consolidar negocios establecidos. Cada proyecto es una oportunidad para crear contenido que inspire, conecte y marque la diferencia."
                 : "My goal is to help companies and entrepreneurs communicate their ideas effectively, whether to launch promising projects or consolidate established businesses. Each project is an opportunity to create content that inspires, connects and makes a difference."}
-            </p>
+            </p> */}
             <ImgContainer src={img.src} prio={false} />
           </div>
         </div>

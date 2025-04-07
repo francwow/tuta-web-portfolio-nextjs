@@ -1,3 +1,5 @@
+import { StaticImageData } from "next/image";
+
 export type NavIndexType = number;
 
 export type PointerIn = boolean;
@@ -5,6 +7,10 @@ export type PointerIn = boolean;
 export type MouseClick = boolean;
 
 export type LanguageType = "ES" | "EN";
+
+export type GalleryReel = {
+  reel: string | StaticImageData[] | string[];
+} | null;
 
 export type NavContextType = {
   index: NavIndexType;
@@ -25,4 +31,9 @@ export type MouseClickContextType = {
 export type LanguageContextType = {
   language: LanguageType;
   setLanguage: (language: LanguageType) => void;
+};
+
+export type GalleryReelContextType = {
+  galleryReel: GalleryReel;
+  setGalleryReel: (galleryReel: GalleryReel) => void;
 };

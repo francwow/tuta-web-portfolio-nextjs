@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { montserrat } from "@/fonts/fonts";
-import { useNavIndex } from "@/contexts/ContextHooks";
+import { useLanguage, useNavIndex } from "@/contexts/ContextHooks";
 
 type NavBarProps = {
   index: number;
@@ -11,6 +11,7 @@ type NavBarProps = {
 
 const NavBarMobile = () => {
   const { index, setIndex } = useNavIndex();
+  const { language } = useLanguage();
 
   return (
     <div className={`nav-wrapper nav-mobile ${montserrat.variable}`}>
@@ -22,28 +23,28 @@ const NavBarMobile = () => {
               onClick={() => setIndex(0)}
               href={"#inicio"}
             >
-              <li>Inicio</li>
+              <li>{language === "ES" ? "Inicio" : "Home"}</li>
             </Link>
             <Link
               className={index === 1 ? "nav-list-item active" : "nav-list-item"}
               onClick={() => setIndex(1)}
               href={"#trabajo"}
             >
-              <li>Trabajo</li>
+              <li>{language === "ES" ? "Trabajo" : "Work"}</li>
             </Link>
             <Link
               className={index === 2 ? "nav-list-item active" : "nav-list-item"}
               onClick={() => setIndex(2)}
               href={"#acerca"}
             >
-              <li>Acerca</li>
+              <li>{language === "ES" ? "Acerca" : "About"}</li>
             </Link>
             <Link
               className={index === 3 ? "nav-list-item active" : "nav-list-item"}
               onClick={() => setIndex(3)}
               href={"#contacto"}
             >
-              <li>Contacto</li>
+              <li>{language === "ES" ? "Contacto" : "Contact"}</li>
             </Link>
           </ul>
         </nav>
